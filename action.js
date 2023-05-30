@@ -110,7 +110,7 @@ function Edit(id) {
 }
 function move(direction, id) {
     if (direction === "progress") {
-        console.log("hello");
+        console.log("hello this is progress");
         var cardDiv = document.getElementById(id);
         var travelButtonDiv = cardDiv.querySelector('.travelButton');
         var markAsDoneButton = document.createElement('button');
@@ -118,7 +118,7 @@ function move(direction, id) {
         markAsDoneButton.setAttribute("id",id);
         markAsDoneButton.setAttribute('onclick', "move('done',this.id)");
         markAsDoneButton.textContent = "Mark As Done";
-        var toDoListButton = document.querySelector('.toProgress');
+        var toDoListButton = cardDiv.querySelector('.toProgress');
         toDoListButton.setAttribute("class","toDoList");
         toDoListButton.setAttribute("onclick","move('todo',this.id)");
         travelButtonDiv.appendChild(markAsDoneButton);
@@ -126,23 +126,24 @@ function move(direction, id) {
     }
     else if(direction === "done"){
 
-        
+        console.log("hello this is done");
         var cardDiv = document.getElementById(id);
         var travelButtonDiv = cardDiv.querySelector('.travelButton');
         var markAsDoneButton = cardDiv.querySelector('.toDone');
         travelButtonDiv.removeChild(markAsDoneButton);
-        var toDoListButton = document.querySelector('.toDoList');
+        var toDoListButton = cardDiv.querySelector('.toDoList');
         toDoListButton.setAttribute("class", "toProgress");
         toDoListButton.setAttribute("onclick", "move('progress',this.id)");
        
         doneContainer.appendChild(cardDiv);
     }
     else if(direction === "todo"){
+        console.log("hello this is todo");
         var cardDiv = document.getElementById(id);
         var travelButtonDiv = cardDiv.querySelector('.travelButton');
         var markAsDoneButton = cardDiv.querySelector('.toDone');
         travelButtonDiv.removeChild(markAsDoneButton);
-        var toDoListButton = document.querySelector('.toDoList');
+        var toDoListButton = cardDiv.querySelector('.toDoList');
         toDoListButton.setAttribute("onclick", "move('progress',this.id)");
         toDoListButton.setAttribute("class","toProgress");
         cardDiv.appendChild(travelButtonDiv);
