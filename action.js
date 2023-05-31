@@ -93,10 +93,10 @@ formContainer.addEventListener('submit', (event) => {
         updateTimer(card.querySelector('.card-body'), dest);
         // card.querySelector('.cardTime').textContent = arr[cardId].date;
         var cardDiv = document.querySelector('.card');
-        cardDiv.style.backgroundColor = arr[cardId].priority;
-        document.querySelector('.card-header').backgroundColor = arr[cardId].priority;
-        document.querySelector('.edit-button').style.color = arr[cardId].priority;
-        document.querySelector('.travelButton').backgroundColor = arr[cardId].priority;
+        card.style.backgroundColor = arr[cardId].priority;
+        card.querySelector('.card-header').backgroundColor = arr[cardId].priority;
+        card.querySelector('.edit-button').style.color = arr[cardId].priority;
+       card.querySelector('.travelButton').backgroundColor = arr[cardId].priority;
         console.log(arr);
 
 
