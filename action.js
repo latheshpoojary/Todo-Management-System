@@ -42,8 +42,8 @@ formContainer.addEventListener('submit', (event) => {
                     <button class="edit-button" onclick="Edit(this.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
                 </div>
                 <div class="card-body">
-                    <p class="cardDescription"><span></span></p>
-                    <p class="cardTime" ></p>
+                    <h5 class="cardDescription"><span></span></h5>
+                    <h5 class="cardTime" ></h5>
                 </div>
                 <div class="travelButton"><button onclick="move('progress',this.id)" class="toProgress">Start</button>
                 </div>
@@ -61,7 +61,10 @@ formContainer.addEventListener('submit', (event) => {
         document.querySelector('.edit-button').setAttribute("id", index);
         document.querySelector('.toProgress').setAttribute("id", index);
         var cardDiv=document.querySelector('.card');
-        cardDiv.style.boxShadow=todoPriorityValue;
+        cardDiv.style.backgroundColor=todoPriorityValue;
+        document.querySelector('.card-header').backgroundColor=todoPriorityValue;
+        document.querySelector('.edit-button').style.color=todoPriorityValue;
+        document.querySelector('.travelButton').backgroundColor=todoPriorityValue;
         index++;
         var cardElement = tempContainer.firstElementChild;
         todoContainer.appendChild(cardElement);
@@ -89,6 +92,11 @@ formContainer.addEventListener('submit', (event) => {
         // console.log(card.querySelector('.cardTime'));
         updateTimer(card.querySelector('.card-body'), dest);
         // card.querySelector('.cardTime').textContent = arr[cardId].date;
+        var cardDiv = document.querySelector('.card');
+        cardDiv.style.backgroundColor = arr[cardId].priority;
+        document.querySelector('.card-header').backgroundColor = arr[cardId].priority;
+        document.querySelector('.edit-button').style.color = arr[cardId].priority;
+        document.querySelector('.travelButton').backgroundColor = arr[cardId].priority;
         console.log(arr);
 
 
@@ -96,7 +104,7 @@ formContainer.addEventListener('submit', (event) => {
 
 });
 function Edit(id) {
-
+    
     console.log(id);
     formContainer.setAttribute("name", id);
     console.log(arr[id].title);

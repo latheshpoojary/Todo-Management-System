@@ -86,3 +86,82 @@ display: flex;
  
   
 }
+
+
+
+
+.card {
+  width: 300px;
+  height: 200px;
+  /* background-color: #ffd166;; */
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  perspective: 1000px;
+  transform: rotateX(2deg) rotateY(2deg);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: rotateX(10deg) rotateY(5deg);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  /* background-color: #ffd166;; */
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.cardTitle {
+  margin: 0;
+  color: #fff;
+}
+
+.edit-button {
+  float: right;
+  background-color: #fff;
+  color:  #ffd166;;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.cardDescription {
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 10px;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.cardTime {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.travelButton {
+  padding: 10px;
+  /* background-color: #7fdbff;; */
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.toProgress {
+  background-color: #fff;
+  color: #d32f2f;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
