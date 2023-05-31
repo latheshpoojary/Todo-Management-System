@@ -45,7 +45,7 @@ formContainer.addEventListener('submit', (event) => {
                     <p class="cardDescription"><span></span></p>
                     <p class="cardTime" ></p>
                 </div>
-                <div class="travelButton"><button onclick="move('progress',this.id)" class="toProgress">Move to Inprogress</button>
+                <div class="travelButton"><button onclick="move('progress',this.id)" class="toProgress">Start</button>
                 </div>
             </div>`;
         var tempContainer = document.getElementById('cards');
@@ -54,22 +54,14 @@ formContainer.addEventListener('submit', (event) => {
         document.querySelector('.cardTitle').textContent = todoTitleValue;
         document.querySelector('.cardDescription').textContent = todoDescValue;
         var dest = new Date(todoDateValue).getTime();
-        // console.log((dest));
-        // var x = setInterval(function () {
-        //     var now = new Date().getTime();
-        //     var diff = dest - now;
-        //     var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        //     // console.log(days);
-        //     var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        //     var minute = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        //     // var second = Math.floor((diff % (1000 * 60)) / (1000));
-
-        //     document.querySelector('.cardTime').textContent = days + "d: " + hours + "h: " + minute + "min";
-
-        // }, 1000);
+        console.log((dest));
+        // 
+        updateTimer(tempContainer.lastElementChild,dest);
         document.querySelector('.card').setAttribute("id", index);
         document.querySelector('.edit-button').setAttribute("id", index);
         document.querySelector('.toProgress').setAttribute("id", index);
+        var cardDiv=document.querySelector('.card');
+        cardDiv.style.boxShadow=todoPriorityValue;
         index++;
         var cardElement = tempContainer.firstElementChild;
         todoContainer.appendChild(cardElement);
@@ -87,10 +79,16 @@ formContainer.addEventListener('submit', (event) => {
         arr[cardId].title = todoTitle.value;
         arr[cardId].desc = todoDescription.value;
         arr[cardId].date = todoDate.value;
+        
         arr[cardId].priority = todoPriority.value;
         var card = document.getElementById(cardId);
         card.querySelector('.cardTitle').textContent = arr[cardId].title;
         card.querySelector('.cardDescription').textContent = arr[cardId].desc;
+        var dest = new Date(arr[cardId].date).getTime();
+        // console.log(dest);
+        // console.log(card.querySelector('.cardTime'));
+        updateTimer(card.querySelector('.card-body'), dest);
+        // card.querySelector('.cardTime').textContent = arr[cardId].date;
         console.log(arr);
 
 
@@ -117,10 +115,12 @@ function move(direction, id) {
         markAsDoneButton.classList.add('toDone');
         markAsDoneButton.setAttribute("id",id);
         markAsDoneButton.setAttribute('onclick', "move('done',this.id)");
-        markAsDoneButton.textContent = "Mark As Done";
+        markAsDoneButton.textContent = "Done";
+        markAsDoneButton.style.backgroundColor="green";
         var toDoListButton = cardDiv.querySelector('.toProgress');
         toDoListButton.setAttribute("class","toDoList");
         toDoListButton.setAttribute("onclick","move('todo',this.id)");
+        toDoListButton.textContent="Back";
         travelButtonDiv.appendChild(markAsDoneButton);
         progressContainer.appendChild(cardDiv);
     }
@@ -146,8 +146,20 @@ function move(direction, id) {
         var toDoListButton = cardDiv.querySelector('.toDoList');
         toDoListButton.setAttribute("onclick", "move('progress',this.id)");
         toDoListButton.setAttribute("class","toProgress");
+        toDoListButton.textContent="Start";
         cardDiv.appendChild(travelButtonDiv);
         todoContainer.appendChild(cardDiv);
     }
     
+}
+function updateTimer(cardElement, dest) {
+    var x = setInterval(function () {
+        // console.log(cardElement);
+        var now = new Date().getTime();
+        var diff = dest - now;
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minute = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        cardElement.querySelector('.cardTime').textContent = days + "d: " + hours + "h: " + minute + "min";
+    }, 1000);
 }

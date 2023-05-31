@@ -46,26 +46,26 @@
                 </div>
                 <div class="modal-body" id="parent">
                     <form id="form" class="false" name="">
-                        <input type="hidden" id="formStatus" name="formStatus" value="new">
+                        <input type="hidden" id="formStatus" name="formStatus" value="new" style="display: none;">
                         <div class="mb-3">
                             <div class="mb-3">
                                 <label for="message-text" class="col-form-label">Todo Title</label>
-                                <textarea class="form-control" id="todo-title" ></textarea>
+                                <textarea class="form-control" id="todo-title" required></textarea>
                             </div>
                             <div class="mb-3">
                                 <div class="mb-3">
                                     <label for="message-text" class="col-form-label">Todo Description</label>
-                                    <textarea class="form-control" id="todo-desc" ></textarea>
+                                    <textarea class="form-control" id="todo-desc" required></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">Todo Target Date</label>
-                                        <input type="date" class="form-control" id="message-date" >
+                                        <input type="date" class="form-control" id="message-date" required>
                                     </div>
                                     <div class="mb-3">
                                         <div class="mb-3">
                                             <label for="message-text" class="col-form-label">Todo priority</label>
-                                            <Select id="priority">
+                                            <Select id="priority" required>
                                                 <option value="0 0 3px 5px red">Red</option>
                                                 <option value="0 0 3px 5px yellow">Yellow</option>
                                                 <option value="0 0 3px 5px blue">Blue</option>
